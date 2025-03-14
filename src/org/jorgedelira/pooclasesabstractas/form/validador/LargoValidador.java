@@ -2,7 +2,7 @@ package org.jorgedelira.pooclasesabstractas.form.validador;
 
 public class LargoValidador extends Validador{
 
-    protected String mensaje = "el campodebe tener mínimo %d caracteres y máximo %d caracteres";
+    protected String mensaje = "el campo debe tener mínimo %d caracteres y máximo %d caracteres";
     private int min = 0;
     private int max = Integer.MAX_VALUE;
 
