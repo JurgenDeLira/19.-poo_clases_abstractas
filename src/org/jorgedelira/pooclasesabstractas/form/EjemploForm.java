@@ -46,7 +46,7 @@ public class EjemploForm {
         saludar.setValor("Hola que tal este campo está deshabilitado!");
         username.setValor("john.doe");
         password.setValor("a1b2c3");
-        email.setValor("john.doe@correo.com");
+        email.setValor("john.doecorreo.com");
         edad.setValor("28");
         experiencia.setValor("... más de 10 años de experiencia ...");
         //java.setSelected(true);
@@ -76,7 +76,7 @@ public class EjemploForm {
 
         elementos.forEach(e -> {
             if(!e.esValido()){
-                e.getErrores().forEach(err -> System.out.println(e.getNombre() + ": " + err));
+                e.getErrores().forEach(System.out::println);
             }
         });
     }

@@ -1,6 +1,8 @@
 package org.jorgedelira.pooclasesabstractas.form.elementos;
 
+import org.jorgedelira.pooclasesabstractas.form.validador.LargoValidador;
 import org.jorgedelira.pooclasesabstractas.form.validador.Validador;
+import org.jorgedelira.pooclasesabstractas.form.validador.mensaje.MensajeFormateable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +38,14 @@ abstract public class ElementoForm {
         this.valor = valor;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
     public boolean esValido(){
         for(Validador v: validadores){
             if(!v.esValido(this.valor)){
-                this.errores.add(v.getMensaje());
+                if(v instanceof MensajeFormateable){
+                    this.errores.add(((LargoValidador) v).getMensajeFormateado(nombre));
+                } else {
+                    this.errores.add(String.format(v.getMensaje(), nombre));
+                }
             }
         }
         return this.errores.isEmpty();
